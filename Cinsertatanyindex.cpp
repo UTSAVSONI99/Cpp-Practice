@@ -1,0 +1,67 @@
+#include<iostream>
+using namespace std;
+struct node
+{
+    int data;
+    struct node*next;
+
+};
+
+void linkedlisttraversal(struct node*head)
+{
+    struct node*ptr=head;
+    do{
+        cout<<ptr->data;
+        ptr=ptr->next;
+
+    }while(ptr!=head);
+}
+struct node*insertatindex(struct node*head,int data,int index)
+{
+    
+   struct node*ptr = (struct node*)malloc(sizeof(struct node));
+   ptr->data=data;
+   struct node*p=head;
+   int i=1;
+     while(i!=index)
+     {
+        p=p->next;
+        i++;
+     }
+      ptr->next=p->next;
+       p->next=ptr;
+       return head;
+}
+ 
+             
+
+
+
+int main()
+{
+   struct node*head;
+   struct node*second;
+   struct node*third;
+   struct node* fourth;
+
+   head = (struct node*)malloc(sizeof(struct node));
+  second= (struct node*)malloc(sizeof(struct node));
+  third = (struct node*)malloc(sizeof(struct node));
+fourth=(struct node*)malloc(sizeof(struct node));
+     head->data=1;
+     head->next= second;
+
+     second->data=2;
+     second->next= third;
+
+     third->data=3;
+     third->next=fourth;
+
+     fourth->data=4;
+     fourth->next=head;
+
+
+     head=insertatindex(head,5,2);
+     linkedlisttraversal(head);
+}
+
